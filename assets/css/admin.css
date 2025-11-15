@@ -1,0 +1,124 @@
+/**
+ * AVAK Header Footer - Admin Styles
+ */
+
+.avak-hf-settings {
+    max-width: 1200px;
+}
+
+.avak-hf-settings h1 {
+    margin-bottom: 20px;
+}
+
+.avak-hf-container {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.avak-hf-section {
+    margin-bottom: 30px;
+}
+
+.avak-hf-section:last-child {
+    margin-bottom: 20px;
+}
+
+.avak-hf-section h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.avak-hf-section .description {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #646970;
+    font-size: 13px;
+}
+
+.avak-hf-code-editor {
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    padding: 10px;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    background: #f6f7f7;
+    resize: vertical;
+}
+
+.avak-hf-code-editor:focus {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+    outline: 2px solid transparent;
+}
+
+.avak-hf-submit {
+    padding-top: 10px;
+}
+
+.avak-hf-info {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    padding: 20px;
+}
+
+.avak-hf-info h3 {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.avak-hf-info ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.avak-hf-info li {
+    margin-bottom: 10px;
+    color: #646970;
+}
+
+.avak-hf-info li strong {
+    color: #1d2327;
+}
+
+/* Code Editor Enhancement */
+.CodeMirror {
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    height: auto;
+    min-height: 250px;
+}
+
+.CodeMirror-scroll {
+    min-height: 250px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 782px) {
+    .avak-hf-settings {
+        margin: 10px 0;
+    }
+
+    .avak-hf-container,
+    .avak-hf-info {
+        padding: 15px;
+    }
+
+    .avak-hf-section h2 {
+        font-size: 16px;
+    }
+
+    .avak-hf-code-editor {
+        font-size: 12px;
+    }
+}
