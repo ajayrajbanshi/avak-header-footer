@@ -3,12 +3,12 @@
  * Plugin Name: AVAK Header Footer Script Placer
  * Plugin URI: https://github.com/ajayrajbanshi/avak-header-footer
  * Description: Enable placing code (HTML/JS/CSS) on Header, Footer and Opening body section
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Ajay Rajbanshi
  * Author URI: https://www.ajayrajbanshi.com.np
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: avak-header-footer
+ * Text Domain: avak-header-footer-script-placer
  */
 
 // Exit if accessed directly
@@ -54,8 +54,8 @@ class AVAK_Header_Footer {
      */
     public function add_admin_menu() {
         add_options_page(
-            __('AVAK Header Footer Settings', 'avak-header-footer'),
-            __('Header Footer Scripts', 'avak-header-footer'),
+            __('AVAK Header Footer Settings', 'avak-header-footer-script-placer'),
+            __('Header Footer Scripts', 'avak-header-footer-script-placer'),
             'manage_options',
             'avak-header-footer',
             array($this, 'settings_page')
@@ -186,8 +186,8 @@ class AVAK_Header_Footer {
             ?>
             <div class="notice notice-warning">
                 <p>
-                    <strong><?php esc_html_e('Theme Compatibility Notice:', 'avak-header-footer'); ?></strong>
-                    <?php esc_html_e('Your current theme may not support the wp_body_open hook. The "Opening Body Code" will be inserted as a fallback in the footer section instead. For optimal placement, consider updating your theme or manually adding wp_body_open() after the <body> tag in your theme\'s header.php file.', 'avak-header-footer'); ?>
+                    <strong><?php esc_html_e('Theme Compatibility Notice:', 'avak-header-footer-script-placer'); ?></strong>
+                    <?php esc_html_e('Your current theme may not support the wp_body_open hook. The "Opening Body Code" will be inserted as a fallback in the footer section instead. For optimal placement, consider updating your theme or manually adding wp_body_open() after the <body> tag in your theme\'s header.php file.', 'avak-header-footer-script-placer'); ?>
                 </p>
             </div>
             <?php
@@ -225,8 +225,8 @@ class AVAK_Header_Footer {
         // Double-check user capabilities
         if (!current_user_can('manage_options')) {
             wp_die(
-                esc_html__('You do not have sufficient permissions to access this page.', 'avak-header-footer'),
-                esc_html__('Permission Denied', 'avak-header-footer'),
+                esc_html__('You do not have sufficient permissions to access this page.', 'avak-header-footer-script-placer'),
+                esc_html__('Permission Denied', 'avak-header-footer-script-placer'),
                 array('response' => 403)
             );
         }
@@ -237,8 +237,8 @@ class AVAK_Header_Footer {
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification doesn't require sanitization
             if (!isset($_POST['_wpnonce']) || !wp_verify_nonce(wp_unslash($_POST['_wpnonce']), 'avak_hf_settings_nonce')) {
                 wp_die(
-                    esc_html__('Security check failed. Please try again.', 'avak-header-footer'),
-                    esc_html__('Security Error', 'avak-header-footer'),
+                    esc_html__('Security check failed. Please try again.', 'avak-header-footer-script-placer'),
+                    esc_html__('Security Error', 'avak-header-footer-script-placer'),
                     array('response' => 403)
                 );
             }
@@ -264,7 +264,7 @@ class AVAK_Header_Footer {
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Using WordPress Options API, not direct DB queries
             update_option('avak_hf_body_open_code', $body_open_code, false);
 
-            echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings saved successfully!', 'avak-header-footer') . '</p></div>';
+            echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings saved successfully!', 'avak-header-footer-script-placer') . '</p></div>';
         }
 
         $header_code = get_option('avak_hf_header_code', '');
@@ -280,9 +280,9 @@ class AVAK_Header_Footer {
                     <?php wp_nonce_field('avak_hf_settings_nonce'); ?>
 
                     <div class="avak-hf-section">
-                        <h2><?php esc_html_e('Header Code', 'avak-header-footer'); ?></h2>
+                        <h2><?php esc_html_e('Header Code', 'avak-header-footer-script-placer'); ?></h2>
                         <p class="description">
-                            <?php esc_html_e('This code will be inserted in the <head> section of your website.', 'avak-header-footer'); ?>
+                            <?php esc_html_e('This code will be inserted in the <head> section of your website.', 'avak-header-footer-script-placer'); ?>
                         </p>
                         <textarea
                             name="avak_hf_header_code"
@@ -293,9 +293,9 @@ class AVAK_Header_Footer {
                     </div>
 
                     <div class="avak-hf-section">
-                        <h2><?php esc_html_e('Opening Body Code', 'avak-header-footer'); ?></h2>
+                        <h2><?php esc_html_e('Opening Body Code', 'avak-header-footer-script-placer'); ?></h2>
                         <p class="description">
-                            <?php esc_html_e('This code will be inserted right after the opening <body> tag.', 'avak-header-footer'); ?>
+                            <?php esc_html_e('This code will be inserted right after the opening <body> tag.', 'avak-header-footer-script-placer'); ?>
                         </p>
                         <textarea
                             name="avak_hf_body_open_code"
@@ -306,9 +306,9 @@ class AVAK_Header_Footer {
                     </div>
 
                     <div class="avak-hf-section">
-                        <h2><?php esc_html_e('Footer Code', 'avak-header-footer'); ?></h2>
+                        <h2><?php esc_html_e('Footer Code', 'avak-header-footer-script-placer'); ?></h2>
                         <p class="description">
-                            <?php esc_html_e('This code will be inserted before the closing </body> tag.', 'avak-header-footer'); ?>
+                            <?php esc_html_e('This code will be inserted before the closing </body> tag.', 'avak-header-footer-script-placer'); ?>
                         </p>
                         <textarea
                             name="avak_hf_footer_code"
@@ -319,25 +319,25 @@ class AVAK_Header_Footer {
                     </div>
 
                     <div class="avak-hf-submit">
-                        <?php submit_button(__('Save Changes', 'avak-header-footer'), 'primary', 'avak_hf_save', false); ?>
+                        <?php submit_button(__('Save Changes', 'avak-header-footer-script-placer'), 'primary', 'avak_hf_save', false); ?>
                     </div>
                 </form>
             </div>
 
             <div class="avak-hf-info">
-                <h3><?php esc_html_e('Usage Examples', 'avak-header-footer'); ?></h3>
+                <h3><?php esc_html_e('Usage Examples', 'avak-header-footer-script-placer'); ?></h3>
                 <ul>
-                    <li><strong><?php esc_html_e('Header Code:', 'avak-header-footer'); ?></strong> <?php esc_html_e('Meta tags, custom CSS, analytics scripts', 'avak-header-footer'); ?></li>
-                    <li><strong><?php esc_html_e('Opening Body Code:', 'avak-header-footer'); ?></strong> <?php esc_html_e('Google Tag Manager (noscript), conversion tracking', 'avak-header-footer'); ?></li>
-                    <li><strong><?php esc_html_e('Footer Code:', 'avak-header-footer'); ?></strong> <?php esc_html_e('JavaScript libraries, deferred scripts, chat widgets', 'avak-header-footer'); ?></li>
+                    <li><strong><?php esc_html_e('Header Code:', 'avak-header-footer-script-placer'); ?></strong> <?php esc_html_e('Meta tags, custom CSS, analytics scripts', 'avak-header-footer-script-placer'); ?></li>
+                    <li><strong><?php esc_html_e('Opening Body Code:', 'avak-header-footer-script-placer'); ?></strong> <?php esc_html_e('Google Tag Manager (noscript), conversion tracking', 'avak-header-footer-script-placer'); ?></li>
+                    <li><strong><?php esc_html_e('Footer Code:', 'avak-header-footer-script-placer'); ?></strong> <?php esc_html_e('JavaScript libraries, deferred scripts, chat widgets', 'avak-header-footer-script-placer'); ?></li>
                 </ul>
 
-                <h3><?php esc_html_e('Best Practices', 'avak-header-footer'); ?></h3>
+                <h3><?php esc_html_e('Best Practices', 'avak-header-footer-script-placer'); ?></h3>
                 <ul>
-                    <li><?php esc_html_e('Always test code in a staging environment first', 'avak-header-footer'); ?></li>
-                    <li><?php esc_html_e('Keep code organized with comments for easy maintenance', 'avak-header-footer'); ?></li>
-                    <li><?php esc_html_e('Minify CSS and JavaScript for better performance', 'avak-header-footer'); ?></li>
-                    <li><?php esc_html_e('Use async or defer attributes for non-critical scripts', 'avak-header-footer'); ?></li>
+                    <li><?php esc_html_e('Always test code in a staging environment first', 'avak-header-footer-script-placer'); ?></li>
+                    <li><?php esc_html_e('Keep code organized with comments for easy maintenance', 'avak-header-footer-script-placer'); ?></li>
+                    <li><?php esc_html_e('Minify CSS and JavaScript for better performance', 'avak-header-footer-script-placer'); ?></li>
+                    <li><?php esc_html_e('Use async or defer attributes for non-critical scripts', 'avak-header-footer-script-placer'); ?></li>
                 </ul>
             </div>
         </div>
