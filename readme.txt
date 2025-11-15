@@ -25,11 +25,10 @@ AVAK Header Footer Script Placer allows you to easily insert custom HTML, JavaSc
 
 **Perfect for adding:**
 
-* Google Tag Manager, Google Analytics, Facebook Pixel, and other tracking codes
+* Google Tag Manager (including noscript), Google Analytics, Facebook Pixel, and other tracking codes
 * Custom CSS for styling
 * JavaScript libraries and custom scripts
 * Meta tags for SEO
-* Google Tag Manager (including noscript)
 * Custom fonts
 * Any other custom HTML/JS/CSS code
 
